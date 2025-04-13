@@ -21,7 +21,6 @@ export default function Header() {
     <header className='page-header'>
       <h1>
         <a href='http://localhost:3010/'>프로젝트 관리 시스템</a>
-        {console.log("Header:", userInfo)}
       </h1>
       <nav>
         <ul className='nav-links'>
