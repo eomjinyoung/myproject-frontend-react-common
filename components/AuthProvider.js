@@ -11,6 +11,11 @@ export const AuthProvider = ({ children }) => {
   const setToken = useCallback((token) => {
     console.log("setToken() 호출됨!");
     
+    if (!token) {
+      console.log("토큰이 없습니다.");
+      return;
+    }
+    
     const fetchUserInfo = async () => {
       try {
         const response = await fetch('http://localhost:8010/auth/user-info', {
