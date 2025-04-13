@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
       console.log("토큰이 없습니다.");
       return;
     }
-    
+
     const fetchUserInfo = async () => {
       try {
         const response = await fetch('http://localhost:8010/auth/user-info', {
@@ -24,7 +24,12 @@ export const AuthProvider = ({ children }) => {
           },
         });
         if (!response.ok) {
-          throw new Error('사용자 정보 요청 실패!');
+          if (response.status === 401) {
+            Cookies.remove("jwt_token");
+            throw new Error("토큰 만료됨");
+          } else {
+            throw new Error("사용자 정보 요청 실패");
+          }
         }
         const result = await response.json();
         if (result.status !== 'success') {
