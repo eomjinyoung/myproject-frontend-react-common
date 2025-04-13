@@ -25,10 +25,10 @@ export default function Header() {
       <nav>
         <ul className='nav-links'>
           <li>
-            <a href='http://localhost:3010/member'>회원</a>
+            <a href='http://localhost:3010/members'>회원</a>
           </li>
           <li>
-            <a href='http://localhost:3020/board'>게시글</a>
+            <a href='http://localhost:3020/boards'>게시글</a>
           </li>
         </ul>
       </nav>
