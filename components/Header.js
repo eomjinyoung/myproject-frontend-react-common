@@ -14,22 +14,22 @@ export default function Header() {
     e.preventDefault();
     console.log("로그아웃 처리");
     resetToken();
-    router.push("/");
+    router.push("http://localhost:3010/");
   }
 
   return (
     <header className='page-header'>
       <h1>
-        <a href='/'>프로젝트 관리 시스템</a>
+        <a href='http://localhost:3010/'>프로젝트 관리 시스템</a>
         {console.log("Header:", userInfo)}
       </h1>
       <nav>
         <ul className='nav-links'>
           <li>
-            <a href='/member'>회원</a>
+            <a href='http://localhost:3010/member'>회원</a>
           </li>
           <li>
-            <a href='/board'>게시글</a>
+            <a href='http://localhost:3020/board'>게시글</a>
           </li>
         </ul>
       </nav>
@@ -40,7 +40,7 @@ export default function Header() {
         </div>
         ) : (
         <div className='login'>
-          <a href='/auth'>로그인</a>
+          <a href='http://localhost:3010/auth'>로그인</a>
         </div>
       ))}
     </header>
