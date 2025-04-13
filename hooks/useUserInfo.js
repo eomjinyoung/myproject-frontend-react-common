@@ -10,7 +10,12 @@ export const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    setToken(Cookies.get("jwt_token"));
+    const jwtToken = Cookies.get('jwt_token');
+    if (jwtToken) {
+      setToken(jwtToken);
+    } else {
+      setToken(null);
+    }
   });
 
   useEffect(() => {
