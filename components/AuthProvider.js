@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     
     if (!token) {
       console.log("토큰이 없습니다.");
+      resetToken();
       return;
     }
 
