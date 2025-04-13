@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useAuth } from 'components/AuthProvider';
+import { useAuth } from 'common/components/AuthProvider';
 import Cookies from 'js-cookie';
 
 export const useUserInfo = () => {

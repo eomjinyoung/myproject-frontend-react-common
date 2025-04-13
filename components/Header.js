@@ -1,17 +1,20 @@
 "use client";
 
-import { useUserInfo } from "./hooks/useUserInfo";
-import { useAuth } from "./components/AuthProvider";
+import { useUserInfo } from "common/hooks/useUserInfo";
+import { useAuth } from "common/components/AuthProvider";
 import "./header.css";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { resetToken } = useAuth();
   const [userInfo] = useUserInfo();
+  const router = useRouter();
 
   function handleLogout(e) {
     e.preventDefault();
     console.log("로그아웃 처리");
     resetToken();
+    router.push("/");
   }
 
   return (
