@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
         setValue(token);
 
       } catch (error) {
-        setError('요청 오류:' + error.message);
+        console.log('요청 오류:' + error.message);
       }
     };
     fetchUserInfo();
