@@ -16,7 +16,7 @@ git submodule update --remote // 브랜치 기준 최신 커밋으로 가져온�
 초기에 add 한 커밋 버전 대신 현재 가져온 커밋 버전으로 변경할 수 있다.
 
 ```bash
-git add common
+git add src/common
 git commit -m "Update submodule to latest commit"
 git push
 ```
