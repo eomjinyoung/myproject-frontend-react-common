@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { useUserInfo } from "../hooks/useUserInfo";
 import "./header.css";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Header() {
   const [userInfo] = useUserInfo();
-  const [user, setUser] = useState();
   const router = useRouter();
 
   useEffect(() => {
