@@ -6,8 +6,8 @@ import "./header.css";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
-export default function Header() {
-  const [userInfo] = useUserInfo();
+export default function Header({ user }) {
+  //const [userInfo] = useUserInfo();
   const router = useRouter();
 
   useEffect(() => {
@@ -41,9 +41,9 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {userInfo ? (
+      {user ? (
         <div className='login'>
-          <span className='user-name'>{userInfo.name}</span>
+          <span className='user-name'>{user.name}</span>
           <a href='#' onClick={handleLogout}>
             로그아웃
           </a>
