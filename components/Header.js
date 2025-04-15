@@ -6,7 +6,6 @@ import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const [userInfo, setUserInfo] = useUserInfo();
   const [user, setUser] = useState();
   const router = useRouter();
 
