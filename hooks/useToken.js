@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 export const useToken = () => {
-  console.log("useToken() 호출됨");
   const { token, setToken } = useState();
 
   useEffect(() => {
