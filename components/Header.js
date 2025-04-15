@@ -6,12 +6,7 @@ import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const { setToken } = useAuth();
-  const [userInfo] = useUserInfo({
-    no: 0,
-    name: "",
-    email: "",
-  });
+  const { setToken, userInfo } = useAuth();
 
   const router = useRouter();
 
