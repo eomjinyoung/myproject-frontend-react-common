@@ -19,11 +19,14 @@ export const AuthProvider = ({ children }) => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch("http://110.165.18.171:8010/auth/user-info", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          "${process.env.NEXT_PUBLIC_AUTH_REST_API_URL}/auth/user-info",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (!response.ok) {
           if (response.status === 401) {
             Cookies.remove("jwt_token");
