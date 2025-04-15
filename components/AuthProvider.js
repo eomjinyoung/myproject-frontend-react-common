@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useContext, useCallback } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext();
