@@ -37,7 +37,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {!userInfo.no ? (
+      {userInfo && !userInfo.no ? (
         <div className='login'>
           <span className='user-name'>{userInfo.name}</span>
           <a href='#' onClick={handleLogout}>
