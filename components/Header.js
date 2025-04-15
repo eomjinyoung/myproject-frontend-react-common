@@ -6,6 +6,7 @@ import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const [userInfo] = useUserInfo();
   const [user, setUser] = useState();
   const router = useRouter();
 
@@ -25,7 +26,6 @@ export default function Header() {
       return;
     }
 
-    setToken(null);
     router.push(`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/`);
   }
 
@@ -44,9 +44,9 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {user ? (
+      {userInfo ? (
         <div className='login'>
-          <span className='user-name'>{user.name}</span>
+          <span className='user-name'>{userInfo.name}</span>
           <a href='#' onClick={handleLogout}>
             로그아웃
           </a>
