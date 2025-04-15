@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }) => {
       }
     };
     fetchUserInfo();
-  }, [value]);
+  }, [token]);
 
   return <AuthContext.Provider value={{ token, setToken }}>{children}</AuthContext.Provider>;
 };
