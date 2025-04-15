@@ -7,7 +7,12 @@ import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { setToken } = useAuth();
-  const [userInfo] = useUserInfo();
+  const [userInfo] = useUserInfo({
+    no: 0,
+    name: "",
+    email: "",
+  });
+
   const router = useRouter();
 
   function handleLogout(e) {
@@ -32,19 +37,18 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {userInfo != null &&
-        (userInfo.no ? (
-          <div className='login'>
-            <span className='user-name'>{userInfo.name}</span>
-            <a href='#' onClick={handleLogout}>
-              로그아웃
-            </a>
-          </div>
-        ) : (
-          <div className='login'>
-            <a href={`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/auth`}>로그인</a>
-          </div>
-        ))}
+      {!userInfo.no ? (
+        <div className='login'>
+          <span className='user-name'>{userInfo.name}</span>
+          <a href='#' onClick={handleLogout}>
+            로그아웃
+          </a>
+        </div>
+      ) : (
+        <div className='login'>
+          <a href={`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/auth`}>로그인</a>
+        </div>
+      )}
     </header>
   );
 }
