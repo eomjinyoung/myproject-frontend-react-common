@@ -17,14 +17,12 @@ export default function Header() {
   function handleLogout(e) {
     e.preventDefault();
     console.log("로그아웃 처리");
-    if (!token) {
-      console.log(`토큰이 없어서 로그인 정보 초기화!`);
-      localStorage.removeItem("no");
-      localStorage.removeItem("name");
-      localStorage.removeItem("email");
-      Cookies.remove("jwt_token");
-      return;
-    }
+
+    console.log(`토큰이 없어서 로그인 정보 초기화!`);
+    localStorage.removeItem("no");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    Cookies.remove("jwt_token");
 
     router.push(`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/`);
   }
