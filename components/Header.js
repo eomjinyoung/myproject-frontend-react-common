@@ -12,6 +12,7 @@ export default function Header() {
 
   useEffect(() => {
     console.log("Header 컴포넌트 랜더링!");
+    !userInfo && setUser(userInfo);
   }, [userInfo]);
 
   function handleLogout(e) {
@@ -36,9 +37,9 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {userInfo && !userInfo.no ? (
+      {user ? (
         <div className='login'>
-          <span className='user-name'>{userInfo.name}</span>
+          <span className='user-name'>{user.name}</span>
           <a href='#' onClick={handleLogout}>
             로그아웃
           </a>
