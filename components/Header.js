@@ -6,14 +6,14 @@ import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const { resetToken } = useAuth();
+  const { setToken } = useAuth();
   const [userInfo] = useUserInfo();
   const router = useRouter();
 
   function handleLogout(e) {
     e.preventDefault();
     console.log("로그아웃 처리");
-    resetToken();
+    setToken(null);
     router.push(`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/`);
   }
 
