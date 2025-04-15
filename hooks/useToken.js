@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 export const useToken = () => {
-  const { token, setToken } = useState();
+  const [token, setToken] = useState();
 
   useEffect(() => {
     if (!token) return;
