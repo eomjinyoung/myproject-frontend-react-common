@@ -32,16 +32,19 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      {userInfo != null && (userInfo.no ? (
-        <div className='login'>
-          <span className='user-name'>{userInfo.name}</span>
-          <a href='#' onClick={handleLogout}>로그아웃</a>
-        </div>
+      {userInfo != null &&
+        (userInfo.no ? (
+          <div className='login'>
+            <span className='user-name'>{userInfo.name}</span>
+            <a href='#' onClick={handleLogout}>
+              로그아웃
+            </a>
+          </div>
         ) : (
-        <div className='login'>
-          <a href='http://localhost:3010/auth'>로그인</a>
-        </div>
-      ))}
+          <div className='login'>
+            <a href='http://localhost:3010/auth'>로그인</a>
+          </div>
+        ))}
     </header>
   );
 }

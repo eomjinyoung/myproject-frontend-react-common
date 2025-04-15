@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useState, useContext, useCallback } from 'react';
-import Cookies from 'js-cookie';
+import { createContext, useState, useContext, useCallback } from "react";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
 
   const setToken = useCallback((token) => {
     console.log("setToken() 호출됨!");
-    
+
     if (!token) {
       console.log("토큰이 없습니다.");
       resetToken();
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch('http://localhost:8010/auth/user-info', {
+        const response = await fetch("http://110.165.18.171:8010/auth/user-info", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -33,8 +33,8 @@ export const AuthProvider = ({ children }) => {
           }
         }
         const result = await response.json();
-        if (result.status !== 'success') {
-          throw new Error('사용자 정보 로딩 실패!');
+        if (result.status !== "success") {
+          throw new Error("사용자 정보 로딩 실패!");
         }
 
         // 로그인 사용자 기본 정보 저장
@@ -49,12 +49,11 @@ export const AuthProvider = ({ children }) => {
           sameSite: "None",
           secure: true,
         });
-    
+
         // 토큰 값을 업데이트
         setValue(token);
-
       } catch (error) {
-        console.log('요청 오류:' + error.message);
+        console.log("요청 오류:" + error.message);
       }
     };
     fetchUserInfo();
