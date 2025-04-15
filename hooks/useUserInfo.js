@@ -24,7 +24,7 @@ export const useUserInfo = () => {
     //   Cookies.remove("jwt_token");
     //   return;
     // }
-  });
+  }, []);
 
   return [userInfo, setUserInfo];
 };

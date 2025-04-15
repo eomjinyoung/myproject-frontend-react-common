@@ -12,7 +12,7 @@ export default function Header() {
 
   useEffect(() => {
     console.log("Header 컴포넌트 랜더링!");
-  });
+  }, []);
 
   function handleLogout(e) {
     e.preventDefault();
