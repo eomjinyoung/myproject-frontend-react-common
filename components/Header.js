@@ -1,14 +1,18 @@
 "use client";
 
-import { useUserInfo } from "common/hooks/useUserInfo";
+import { useState } from "react";
 import { useAuth } from "common/components/AuthProvider";
 import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
   const { setToken, userInfo } = useAuth();
-
+  const [user, setUser] = useState();
   const router = useRouter();
+
+  useEffect(() => {
+    console.log("Header 컴포넌트 랜더링!");
+  }, [userInfo]);
 
   function handleLogout(e) {
     e.preventDefault();
