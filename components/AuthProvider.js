@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUserInfo = async () => {
       try {
         const response = await fetch(
-          "${process.env.NEXT_PUBLIC_AUTH_REST_API_URL}/auth/user-info",
+          `${process.env.NEXT_PUBLIC_AUTH_REST_API_URL}/auth/user-info`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
