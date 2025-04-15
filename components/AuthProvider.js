@@ -6,11 +6,21 @@ import Cookies from "js-cookie";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [value, setValue] = useState();
+  const [token, setToken] = useState();
 
-  const setToken = useCallback((token) => {
-    console.log("setToken() 호출됨!");
+  useEffect(() => {
+    console.log(`토큰 값(${token}) 변경 됨!`);
 
+    if (!token) {
+      console.log(`토큰 값이 없어서 로그인 정보 초기화!`);
+      localStorage.removeItem("no");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      Cookies.remove("jwt_token");
+      return;
+    }
+
+    console.log(`토큰(${token})이 있어서 로그인 사용자 정보를 요청!`);
     const fetchUserInfo = async () => {
       try {
         const response = await fetch(
@@ -34,41 +44,27 @@ export const AuthProvider = ({ children }) => {
           throw new Error("사용자 정보 로딩 실패!");
         }
 
+        console.log("사용자 정보 가져옴! - localStorage 보관");
         // 로그인 사용자 기본 정보 저장
         localStorage.setItem("no", result.data.no);
         localStorage.setItem("name", result.data.name);
         localStorage.setItem("email", result.data.email);
 
-        // JWT 토큰을 쿠키에 저장
+        console.log("JWT 토큰을 쿠키에 저장");
         Cookies.set("jwt_token", token, {
           path: "/",
           domain: "localhost",
           sameSite: "None",
           secure: true,
         });
-
-        // 토큰 값을 업데이트
-        setValue(token);
       } catch (error) {
         console.log("요청 오류:" + error.message);
       }
     };
     fetchUserInfo();
-  }, []);
+  }, [value]);
 
-  const resetToken = useCallback(() => {
-    localStorage.removeItem("no");
-    localStorage.removeItem("name");
-    localStorage.removeItem("email");
-    Cookies.remove("jwt_token");
-    setValue(null);
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ token: value, setToken, resetToken }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ token, setToken }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
