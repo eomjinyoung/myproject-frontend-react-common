@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { useAuth } from 'common/components/AuthProvider';
-import Cookies from 'js-cookie';
+import { useEffect, useState } from "react";
+import { useAuth } from "common/components/AuthProvider";
+import Cookies from "js-cookie";
 
 export const useUserInfo = () => {
-  console.log('useUserInfo() 호출됨');
+  console.log("useUserInfo() 호출됨");
   const { token, setToken } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    const jwtToken = Cookies.get('jwt_token');
+    const jwtToken = Cookies.get("jwt_token");
+    console.log(`useUserInfo()/useEffet()/1: ${jwtToken}`);
     if (jwtToken) {
       setToken(jwtToken);
     } else {
@@ -19,7 +20,7 @@ export const useUserInfo = () => {
   });
 
   useEffect(() => {
-    console.log("useUserInfo()/useEffect 호출됨");
+    console.log("useUserInfo()/useEffect()/2: 호출됨");
     const no = localStorage.getItem("no");
     if (no) {
       setUserInfo({
