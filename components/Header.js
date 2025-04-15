@@ -1,23 +1,31 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAuth } from "common/components/AuthProvider";
+import { useUserInfo } from "../hooks/useUserInfo";
 import "./header.css";
 import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const { setToken, userInfo } = useAuth();
+  const [userInfo, setUserInfo] = useUserInfo();
   const [user, setUser] = useState();
   const router = useRouter();
 
   useEffect(() => {
     console.log("Header 컴포넌트 랜더링!");
-    !userInfo && setUser(userInfo);
-  }, [userInfo]);
+  });
 
   function handleLogout(e) {
     e.preventDefault();
     console.log("로그아웃 처리");
+    if (!token) {
+      console.log(`토큰이 없어서 로그인 정보 초기화!`);
+      localStorage.removeItem("no");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
+      Cookies.remove("jwt_token");
+      return;
+    }
+
     setToken(null);
     router.push(`${process.env.NEXT_PUBLIC_AUTH_UI_URL}/`);
   }

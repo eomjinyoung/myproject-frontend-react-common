@@ -1,26 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAuth } from "common/components/AuthProvider";
 import Cookies from "js-cookie";
 
-export const useUserInfo = () => {
-  console.log("useUserInfo() 호출됨");
-  const [userInfo, setUserInfo] = useState(null);
+export const useToken = () => {
+  console.log("useToken() 호출됨");
+  const { token, setToken } = useState();
 
   useEffect(() => {
+    if (!token) return;
+
     console.log(`토큰 값이 변경 됨!`);
 
-    if (!token) {
-      console.log(`토큰이 없어서 로그인 정보 초기화!`);
-      localStorage.removeItem("no");
-      localStorage.removeItem("name");
-      localStorage.removeItem("email");
-      Cookies.remove("jwt_token");
-      return;
-    }
-
-    console.log(`토큰이 있어서 로그인 사용자 정보를 요청!`);
+    console.log(`로그인 사용자 정보를 요청!`);
     const fetchUserInfo = async () => {
       try {
         const response = await fetch(
@@ -59,39 +51,12 @@ export const useUserInfo = () => {
           sameSite: "None",
           secure: true,
         });
-
-        console.log("setUserInf()를 호출하여 사용자 정보를 저장!");
-        setUserInfo(user);
       } catch (error) {
         console.log("요청 오류:" + error.message);
       }
     };
     fetchUserInfo();
-  }, [userInfo]);
-  /*
-  useEffect(() => {
-    const jwtToken = Cookies.get("jwt_token");
-    console.log(`useUserInfo()/useEffet()/1: ${jwtToken}`);
-    if (jwtToken) {
-      setToken(jwtToken);
-    } else {
-      setToken(null);
-    }
-  });
-
-  useEffect(() => {
-    console.log("useUserInfo()/useEffect()/2: 호출됨");
-    const no = localStorage.getItem("no");
-    if (no) {
-      setUserInfo({
-        no: localStorage.getItem("no"),
-        name: localStorage.getItem("name"),
-        email: localStorage.getItem("email"),
-      });
-    } else {
-      setUserInfo({});
-    }
   }, [token]);
-*/
-  return [userInfo, setUserInfo];
+
+  return [token, setToken];
 };
