@@ -49,7 +49,7 @@ export const useToken = () => {
           domain: "localhost",
 
           // Non-HTTPS:
-          sameSite: "Lax",
+          sameSite: "None",
           secure: false,
 
           // HTTPS:
