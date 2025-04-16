@@ -1,19 +1,7 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { useUserInfo } from "../hooks/useUserInfo";
 import "./header.css";
-import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 
 export default function Header({ user }) {
-  //const [userInfo] = useUserInfo();
-  const router = useRouter();
-
-  useEffect(() => {
-    console.log("Header 컴포넌트 랜더링!");
-  }, []);
-
   function handleLogout(e) {
     e.preventDefault();
     console.log("로그아웃 처리");
