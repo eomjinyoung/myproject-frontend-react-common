@@ -1,18 +1,22 @@
 "use client";
 
+import { useEffect } from "react";
 import "./header.css";
 import Cookies from "js-cookie";
 
 export default function Header({ user }) {
-  if (user) {
-    const no = parseInt(localStorage.getItem("no"));
-    if (user.no !== no) {
-      console.log("사용자 정보를 localStorage 에 보관 했음!");
-      localStorage.setItem("no", user.no);
-      localStorage.setItem("name", user.name);
-      localStorage.setItem("email", user.email);
+  useEffect(() => {
+    console.log(user);
+    if (user) {
+      const no = parseInt(localStorage.getItem("no"));
+      if (user.no !== no) {
+        console.log("사용자 정보를 localStorage 에 보관 했음!");
+        localStorage.setItem("no", user.no);
+        localStorage.setItem("name", user.name);
+        localStorage.setItem("email", user.email);
+      }
     }
-  }
+  });
 
   function handleLogout(e) {
     e.preventDefault();
