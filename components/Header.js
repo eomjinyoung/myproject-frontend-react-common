@@ -1,3 +1,5 @@
+"use client";
+
 import "./header.css";
 import Cookies from "js-cookie";
 
