@@ -15,15 +15,6 @@ export const useUserInfo = () => {
       name: localStorage.getItem("name"),
       email: localStorage.getItem("email"),
     });
-
-    // if (!token) {
-    //   console.log(`토큰이 없어서 로그인 정보 초기화!`);
-    //   localStorage.removeItem("no");
-    //   localStorage.removeItem("name");
-    //   localStorage.removeItem("email");
-    //   Cookies.remove("jwt_token");
-    //   return;
-    // }
   }, []);
 
   return [userInfo, setUserInfo];

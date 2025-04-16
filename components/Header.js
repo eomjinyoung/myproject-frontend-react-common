@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 
 export default function Header({ user }) {
   useEffect(() => {
-    console.log(user);
     if (user) {
       const no = parseInt(localStorage.getItem("no"));
       if (user.no !== no) {
