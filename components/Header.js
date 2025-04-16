@@ -4,9 +4,9 @@ import "./header.css";
 import Cookies from "js-cookie";
 
 export default function Header({ user }) {
-  const no = localStorage.getItem("no");
-  console.log(typeof user.no, typeof no);
   if (user) {
+    const no = localStorage.getItem("no");
+    console.log(typeof user.no, typeof no);
     console.log("사용자 정보를 localStorage 에 보관 했음!");
     localStorage.setItem("no", user.no);
     localStorage.setItem("name", user.name);
