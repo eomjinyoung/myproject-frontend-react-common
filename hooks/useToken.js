@@ -42,20 +42,6 @@ export const useToken = () => {
         localStorage.setItem("no", user.no);
         localStorage.setItem("name", user.name);
         localStorage.setItem("email", user.email);
-
-        console.log("JWT 토큰을 쿠키에 저장");
-        Cookies.set("jwt_token", token, {
-          path: "/",
-          domain: "localhost",
-
-          // Non-HTTPS:
-          sameSite: "None",
-          secure: false,
-
-          // HTTPS:
-          // sameSite: "None", // HTTPS 환경일 때
-          // secure: true, // HTTPS 환경일 때
-        });
       } catch (error) {
         console.log("요청 오류:" + error.message);
       }
