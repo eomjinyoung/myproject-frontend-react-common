@@ -44,7 +44,6 @@ export const useToken = () => {
         localStorage.setItem("email", user.email);
 
         console.log("JWT 토큰을 쿠키에 저장");
-        Cookies.set("jwt_token2", token, { expires: 7 });
         Cookies.set("jwt_token", token, {
           path: "/",
           domain: "localhost",
