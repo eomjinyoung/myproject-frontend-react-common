@@ -47,8 +47,14 @@ export const useToken = () => {
         Cookies.set("jwt_token", token, {
           path: "/",
           domain: "localhost",
-          sameSite: "None",
-          secure: true,
+
+          // Non-HTTPS:
+          sameSite: "Lax",
+          secure: false,
+
+          // HTTPS:
+          // sameSite: "None", // HTTPS 환경일 때
+          // secure: true, // HTTPS 환경일 때
         });
       } catch (error) {
         console.log("요청 오류:" + error.message);
