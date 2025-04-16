@@ -9,7 +9,7 @@ import Cookies from "js-cookie";
 export default function Header({ user }) {
   //const [userInfo] = useUserInfo();
   const router = useRouter();
-  Cookies.remove("jwt_token2");
+
   useEffect(() => {
     console.log("Header 컴포넌트 랜더링!");
   }, []);
