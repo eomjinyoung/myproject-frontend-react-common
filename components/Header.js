@@ -24,7 +24,10 @@ export default function Header({ user }) {
     localStorage.removeItem("no");
     localStorage.removeItem("name");
     localStorage.removeItem("email");
-    Cookies.remove("jwt_token");
+    Cookies.remove("jwt_token", {
+      path: "/",
+      domain: ".eomcs.com"
+    });
 
     window.location.href = `${process.env.NEXT_PUBLIC_AUTH_UI_URL}/`;
   }
