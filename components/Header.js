@@ -19,7 +19,7 @@ export default function Header({ user }) {
 
   function handleLogout(e) {
     e.preventDefault();
-    console.log("로그아웃 처리");
+    console.log("로그아웃 처리2");
 
     localStorage.removeItem("no");
     localStorage.removeItem("name");
